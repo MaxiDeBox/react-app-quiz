@@ -7,11 +7,11 @@ const ActiveQuiz = (props) => {
     <div className={classes.ActiveQuiz}>
       <p className={classes.Question}>
         <span>
-          <strong>1.</strong>&nbsp;
+          <strong>{props.answerNumber}.</strong>&nbsp;
           {props.question}
         </span>
         <small>
-          1 из 12
+          {props.answerNumber} из {props.quizLength}
         </small>
       </p>
 

@@ -77,8 +77,6 @@ export default class Auth extends React.Component {
       isFromValid = formControls[name].valid && isFromValid;
     });
 
-    console.log(isFromValid);
-
     this.setState({
       formControls: formControls,
       isFormValid: isFromValid

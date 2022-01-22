@@ -3,6 +3,14 @@ import classes from './Auth.module.css';
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 export default class Auth extends React.Component {
   state = {
     formControls: {
@@ -54,7 +62,42 @@ export default class Auth extends React.Component {
   }
 
   onChangeHandler = (event, controlName) => {
-    console.log(`${controlName}: `, `${event.target.value}`)
+    const formControls = {...this.state.formControls};
+    const control = {...formControls[controlName]};
+
+    control.value = event.target.value;
+    control.touched = true;
+    control.valid = this.validateControl(control.value, control.validation);
+
+    formControls[controlName] = control;
+
+    this.setState({
+      formControls
+    });
+  }
+
+  validateControl(value, validation) {
+    if(!validation) {
+      return true;
+    }
+
+    let isValid = true;
+    // Валидация на обазательное заполнение поля
+    if (validation.require) {
+      isValid = value.trim() !== '' && isValid;
+    }
+
+    // Валидация поля почты
+    if(validation.email) {
+      isValid = validateEmail(value) && isValid;
+    }
+
+    // Валидация минимального значения введенного текста в поле
+    if(validation.minLength) {
+      isValid = value.length >= validation.minLength && isValid
+    }
+
+    return isValid;
   }
 
   loginHandler() {

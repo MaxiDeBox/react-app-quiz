@@ -4,6 +4,7 @@ import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
 import {createControl} from "../../form/formFrameWork";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
+import Select from "../../components/UI/Select/Select";
 
 function createOptionControl(number) {
   return createControl({
@@ -34,11 +35,18 @@ export default class QuizCreator extends React.Component {
 
   state = {
     quiz: [],
+    rightAnswerId: 1,
     formControls: createFunctionConrols()
   };
 
   submitHandle = (event) => {
     event.preventDefault();
+  }
+
+  selectChangeHandler = (event) => {
+    this.setState({
+      rightAnswerId: +event.target.value
+    });
   }
 
   addQuestionHandler = () => {
@@ -76,6 +84,18 @@ export default class QuizCreator extends React.Component {
   }
 
   render() {
+    const select = <Select
+      label='Выберите правильный ответ'
+      value={this.state.rightAnswerId}
+      onChange={this.selectChangeHandler}
+      options={[
+        {text: 1, value: 1},
+        {text: 2, value: 2},
+        {text: 3, value: 3},
+        {text: 4, value: 4},
+      ]}
+    />
+
     return (
       <div className={classes.QuizCreator}>
         <div>
@@ -84,7 +104,7 @@ export default class QuizCreator extends React.Component {
           <form onSubmit={this.submitHandle}>
             { this.renderInputs() }
 
-            <select></select>
+            { select }
 
             <Button
               type='primary'

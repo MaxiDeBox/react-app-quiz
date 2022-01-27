@@ -11,7 +11,8 @@ function createOptionControl(number) {
   return createControl({
     id: number,
     label: `Вариант ${number}`,
-    errorMessage: 'Значение не может быть пустым'
+    errorMessage: 'Значение не может быть пустым',
+    value: ''
   }, {
     required: true
   });
@@ -21,7 +22,8 @@ function createFunctionControls() {
   return {
     question: createControl({
       label: 'Введите вопрос',
-      errorMessage: 'Вопрос не может быть пустым'
+      errorMessage: 'Вопрос не может быть пустым',
+      value: ''
     }, {
       required: true
     }),
@@ -86,9 +88,9 @@ export default class QuizCreator extends React.Component {
     const control = {...formControls[controlName]};
 
     control.touched = true;
-    control.value = value;
+    control.value = value.trim().length > 0 ? value : '';
     control.valid = Validate(control.value, control.validation);
-
+    console.log(control);
     formControls[controlName] = control;
 
     this.setState({

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigateFunction, useLocation, useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 
 export function WithRouter(Child) {
   return ( props) => {

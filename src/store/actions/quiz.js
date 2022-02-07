@@ -9,7 +9,6 @@ import {
   QUIZ_RETRY,
   QUIZ_SET_STATE
 } from "./actionsTypes";
-import {bindReporter} from "web-vitals/dist/modules/lib/bindReporter";
 
 export function fetchQuizes() {
   return async dispatch => {

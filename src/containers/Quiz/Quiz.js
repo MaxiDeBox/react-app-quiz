@@ -1,11 +1,11 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import classes from './Quiz.module.css';
 import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
 import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
 import Loader from "../../components/UI/Loader/Loader";
 import {WithRouter} from "../../hoc/WithRouter/WithRouter";
 import {connect} from "react-redux";
-import {fetchQuizById, fetchQuizes, quizAnswerClick, retryQuiz} from "../../store/actions/quiz";
+import {fetchQuizById, quizAnswerClick, retryQuiz} from "../../store/actions/quiz";
 
 class Quiz extends Component {
   componentDidMount() {

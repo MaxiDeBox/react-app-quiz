@@ -43,7 +43,7 @@ class QuizList extends React.Component {
   }
 }
 
-function mapStatetoProps(state) {
+function mapStateToProps(state) {
   return {
     quizes: state.quiz.quizes,
     loading: state.quiz.loading
@@ -56,4 +56,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(QuizList);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizList);

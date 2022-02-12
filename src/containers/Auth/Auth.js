@@ -133,7 +133,6 @@ class Auth extends React.Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log(4);
   }
 
   render() {

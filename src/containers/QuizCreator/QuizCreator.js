@@ -179,7 +179,7 @@ class QuizCreator extends React.Component {
   }
 }
 
-function mapStatetoProps(state) {
+function mapStateToProps(state) {
   return {
     quiz: state.create.quiz
   };
@@ -192,4 +192,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(QuizCreator);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizCreator);

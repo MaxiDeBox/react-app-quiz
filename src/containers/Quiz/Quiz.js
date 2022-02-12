@@ -43,7 +43,7 @@ class Quiz extends Component {
   }
 }
 
-function mapStatetoProps(state) {
+function mapStateToProps(state) {
   return {
     results: state.quiz.results,
     isFinished: state.quiz.isFinished,
@@ -62,4 +62,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(WithRouter(Quiz));
+export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(Quiz));
